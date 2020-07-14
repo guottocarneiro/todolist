@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\guott\\Desktop\\ToDoList\\LoginAPI\\LoginAPI.csproj": {}
+    "C:\\Users\\guott\\Desktop\\todolist\\LoginAPI\\LoginAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\guott\\Desktop\\ToDoList\\LoginAPI\\LoginAPI.csproj": {
+    "C:\\Users\\guott\\Desktop\\todolist\\LoginAPI\\LoginAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\guott\\Desktop\\ToDoList\\LoginAPI\\LoginAPI.csproj",
+        "projectUniqueName": "C:\\Users\\guott\\Desktop\\todolist\\LoginAPI\\LoginAPI.csproj",
         "projectName": "LoginAPI",
-        "projectPath": "C:\\Users\\guott\\Desktop\\ToDoList\\LoginAPI\\LoginAPI.csproj",
+        "projectPath": "C:\\Users\\guott\\Desktop\\todolist\\LoginAPI\\LoginAPI.csproj",
         "packagesPath": "C:\\Users\\guott\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\guott\\Desktop\\ToDoList\\LoginAPI\\obj\\",
+        "outputPath": "C:\\Users\\guott\\Desktop\\todolist\\LoginAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\guott\\AppData\\Roaming\\NuGet\\NuGet.Config",
