@@ -20,6 +20,14 @@ namespace ToDoList.Models
             this.Status = status;
             this.Lista = lista;
         }
+
+        public void TarefaSetCampos(string nome, string descricao, Boolean status, Lista lista)
+        {
+            this.Nome = nome;
+            this.Descricao = descricao;
+            this.Status = status;
+            this.Lista = lista;
+        }
         
         [Required]
         public string Nome { get; private set; }
