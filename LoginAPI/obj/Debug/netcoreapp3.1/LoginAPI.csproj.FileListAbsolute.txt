@@ -48,6 +48,7 @@ C:\Users\guott\Desktop\ToDoList\LoginAPI\bin\Debug\netcoreapp3.1\runtimes\win-x8
 C:\Users\guott\Desktop\ToDoList\LoginAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\guott\Desktop\ToDoList\LoginAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\guott\Desktop\ToDoList\LoginAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\guott\Desktop\ToDoList\LoginAPI\obj\Debug\netcoreapp3.1\LoginAPI.csproj.CoreCompileInputs.cache
-C:\Users\guott\Desktop\ToDoList\LoginAPI\obj\Debug\netcoreapp3.1\LoginAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\guott\Desktop\ToDoList\LoginAPI\obj\Debug\netcoreapp3.1\LoginAPI.csproj.CopyComplete
+C:\Users\guott\Desktop\todolist\LoginAPI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\guott\Desktop\todolist\LoginAPI\obj\Debug\netcoreapp3.1\LoginAPI.csproj.CoreCompileInputs.cache
+C:\Users\guott\Desktop\todolist\LoginAPI\obj\Debug\netcoreapp3.1\LoginAPI.MvcApplicationPartsAssemblyInfo.cache
