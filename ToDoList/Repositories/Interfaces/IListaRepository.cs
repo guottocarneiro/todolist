@@ -6,7 +6,7 @@ namespace ToDoList.Repositories
 {
     public interface IListaRepository
     {
-        Task UpdateTarefa(int idLista, string nomeTarefa, Boolean statusTarefa, string descricaoTarefa);
+        Task CreateLista();
         Task<Lista> GetLista(int idLista);
     }
 }

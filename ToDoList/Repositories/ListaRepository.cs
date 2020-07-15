@@ -10,7 +10,6 @@ namespace ToDoList.Repositories
 {
     public class ListaRepository : BaseRepository<Lista>, IListaRepository
     {
-        private readonly ITarefaRepository tarefaRepository;
         private readonly IHttpContextAccessor contextAccessor;
         public ListaRepository(ApplicationContext contexto, IHttpContextAccessor contextAccessor) : base(contexto)
         {
@@ -20,28 +19,15 @@ namespace ToDoList.Repositories
         public async Task<Lista> GetLista (int idLista)
         {
             var lista = await dbSet.Include(p => p.Tarefas).Where(p => p.Id == idLista).SingleOrDefaultAsync();
-
-
-            if (lista == null)
-            {
-                lista = new Lista((int)(contextAccessor.HttpContext.Session.GetInt32("usuarioId")));
-                await contexto.Set<Lista>().AddAsync(lista);
-                await contexto.SaveChangesAsync();
-            }
-
             return lista;
         }
-        
-        public async Task UpdateTarefa(int idLista, string nomeTarefa, Boolean statusTarefa, string descricaoTarefa)
+
+        public async Task CreateLista()
         {
-            var lista = await GetLista(idLista);
-
-            if (lista == null)
-            {
-                throw new ArgumentException("Lista não encontrada");
-            }
-
-            await tarefaRepository.UpdateTarefa(nomeTarefa, statusTarefa, descricaoTarefa, lista);
+            var lista = new Lista((int)(contextAccessor.HttpContext.Session.GetInt32("usuarioId")));
+            await dbSet.AddAsync(lista);
+            await contexto.SaveChangesAsync();
         }
+
     }
 }

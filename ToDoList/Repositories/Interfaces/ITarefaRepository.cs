@@ -5,6 +5,7 @@ namespace ToDoList.Repositories
 {
     public interface ITarefaRepository
     {
-        Task UpdateTarefa(string nomeTarefa, bool statusTarefa, string descricaoTarefa, Lista lista);
+        Task UpdateTarefa(Tarefa tarefa);
+        Task CreateTarefa(Tarefa tarefa);
     }
 }

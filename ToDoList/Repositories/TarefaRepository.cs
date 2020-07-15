@@ -14,21 +14,21 @@ namespace ToDoList.Repositories
 
         }
 
-        public async Task UpdateTarefa(string nomeTarefa, Boolean statusTarefa, string descricaoTarefa, Lista lista)
+        public async Task CreateTarefa(Tarefa tarefa)
         {
-            var tarefa = await contexto.Set<Tarefa>().Where(t => t.Nome == nomeTarefa).SingleOrDefaultAsync();
+            await dbSet.AddAsync(tarefa);
+            await contexto.SaveChangesAsync();
+        }
 
-            if (tarefa == null)
-            {
-                tarefa = new Tarefa(nomeTarefa, descricaoTarefa, true, lista);
-                await contexto.Set<Tarefa>().AddAsync(tarefa);
-            }
-            else
-            {
-                tarefa.TarefaSetCampos(nomeTarefa, descricaoTarefa, statusTarefa, lista);
-                contexto.Set<Tarefa>().Update(tarefa);
-            }
+        public async Task UpdateTarefa(Tarefa tarefa)
+        {
+            dbSet.Update(tarefa);
+            await contexto.SaveChangesAsync();
+        }
 
+        public async Task DeleteTarefa(Tarefa tarefa)
+        {
+            dbSet.Remove(tarefa);
             await contexto.SaveChangesAsync();
         }
     }

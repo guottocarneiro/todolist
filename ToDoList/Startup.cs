@@ -26,11 +26,13 @@ namespace ToDoList
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDistributedMemoryCache();
             services.AddSession();
 
             string connectionString = Configuration.GetConnectionString("Default");
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
 
+            services.AddTransient<IListaRepository, ListaRepository>();
             services.AddTransient<ITarefaRepository, TarefaRepository>();
         }
 
