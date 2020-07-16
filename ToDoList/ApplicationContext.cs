@@ -19,8 +19,7 @@ namespace ToDoList
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Tarefa>().HasKey(t => t.Id);
-            modelBuilder.Entity<Tarefa>().HasOne(t => t.Lista);
-
+            modelBuilder.Entity<Lista>().HasKey(t => t.Id);
 
             modelBuilder.Entity<Lista>().HasKey(t => t.Id);
             modelBuilder.Entity<Lista>().HasMany(t => t.Tarefas).WithOne(t => t.Lista);

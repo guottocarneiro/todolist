@@ -14,6 +14,12 @@ namespace ToDoList.Repositories
 
         }
 
+        public async Task<Tarefa> GetTarefa(int idTarefa)
+        {
+            var tarefa = await dbSet.Where(t => t.Id == idTarefa).SingleOrDefaultAsync();
+            return tarefa;
+        }
+        
         public async Task CreateTarefa(Tarefa tarefa)
         {
             await dbSet.AddAsync(tarefa);
@@ -26,8 +32,10 @@ namespace ToDoList.Repositories
             await contexto.SaveChangesAsync();
         }
 
-        public async Task DeleteTarefa(Tarefa tarefa)
+        public async Task DeleteTarefa(int idTarefa)
         {
+            var tarefa = await GetTarefa(idTarefa);
+            
             dbSet.Remove(tarefa);
             await contexto.SaveChangesAsync();
         }

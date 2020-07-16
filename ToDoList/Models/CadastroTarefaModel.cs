@@ -7,9 +7,10 @@ namespace ToDoList.Models
 {
     public class CadastroTarefaModel
     {
+        public int IdTarefa { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public Boolean Status { get; set; }
         public int IdLista { get; set; }
+        public Boolean Status { get; set; }
     }
 }

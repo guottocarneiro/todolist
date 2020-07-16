@@ -7,5 +7,7 @@ namespace ToDoList.Repositories
     {
         Task UpdateTarefa(Tarefa tarefa);
         Task CreateTarefa(Tarefa tarefa);
+        Task DeleteTarefa(int idTarefa);
+        Task<Tarefa> GetTarefa(int idTarefa);
     }
 }
