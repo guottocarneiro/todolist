@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Models;
 using ToDoList.Repositories;
@@ -15,11 +16,13 @@ namespace ToDoList.Controllers
     {
         private readonly IListaRepository listaRepository;
         private readonly ITarefaRepository tarefaRepository;
+        private readonly IHttpContextAccessor contextAccessor;
 
-        public ListaController(IListaRepository _listaRepository, ITarefaRepository _tarefaRepository)
+        public ListaController(IListaRepository _listaRepository, ITarefaRepository _tarefaRepository, IHttpContextAccessor _contextAccessor)
         {
             listaRepository = _listaRepository;
             tarefaRepository = _tarefaRepository;
+            contextAccessor = _contextAccessor;
         }        
         public IActionResult Index()
         {
@@ -63,7 +66,7 @@ namespace ToDoList.Controllers
 
             if (lista == null)
             {
-                return NotFound(lista.Tarefas);
+                return NotFound();
             }
             else
             {
@@ -75,6 +78,31 @@ namespace ToDoList.Controllers
 
                 return Ok(retornoTarefas);
             }
+        }
+
+        [HttpGet]
+        [Route("listas")]
+        public async Task<IActionResult> Listas()
+        {
+            var idUsuario = contextAccessor.HttpContext.Session.GetInt32("usuarioId");
+
+            var listas = await listaRepository.GetListaUsuario((int)idUsuario);
+
+            if(listas  == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(listas);
+            }
+        }
+
+        [HttpPost]
+        [Route("usuario")]
+        public void Usuario([FromBody] int idUsuario)
+        {
+            listaRepository.SetUsuarioSession(idUsuario);
         }
 
     }

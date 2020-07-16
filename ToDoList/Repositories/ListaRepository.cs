@@ -22,11 +22,22 @@ namespace ToDoList.Repositories
             return lista;
         }
 
+        public async Task<ICollection<Lista>> GetListaUsuario(int idUsuario)
+        {
+            var listas = await dbSet.Include(p => p.Tarefas).Where(p => p.IdUsuario == idUsuario).ToListAsync();
+            return listas;
+        }
+
         public async Task CreateLista()
         {
             var lista = new Lista((int)(contextAccessor.HttpContext.Session.GetInt32("usuarioId")));
             await dbSet.AddAsync(lista);
             await contexto.SaveChangesAsync();
+        }
+
+        public void SetUsuarioSession(int idUsuario)
+        {
+            contextAccessor.HttpContext.Session.SetInt32("usuarioId", idUsuario);
         }
 
     }

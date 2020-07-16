@@ -19,10 +19,8 @@ namespace LoginAPI.Repositories
             return usuario;
         }
 
-        public async Task CreateUsuario(string loginUsuario, string senhaUsuario)
+        public async Task CreateUsuario(Usuario usuario)
         {
-            var usuario = new Usuario(loginUsuario, senhaUsuario);
-
             await dbSet.AddAsync(usuario);
 
             await contexto.SaveChangesAsync();
