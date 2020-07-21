@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\guott\\Desktop\\todolist\\ToDoList\\ToDoList.csproj": {}
+    "C:\\Users\\guott\\Desktop\\ToDoList\\ToDoList\\ToDoList.csproj": {}
   },
   "projects": {
-    "C:\\Users\\guott\\Desktop\\todolist\\ToDoList\\ToDoList.csproj": {
+    "C:\\Users\\guott\\Desktop\\ToDoList\\ToDoList\\ToDoList.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\guott\\Desktop\\todolist\\ToDoList\\ToDoList.csproj",
+        "projectUniqueName": "C:\\Users\\guott\\Desktop\\ToDoList\\ToDoList\\ToDoList.csproj",
         "projectName": "ToDoList",
-        "projectPath": "C:\\Users\\guott\\Desktop\\todolist\\ToDoList\\ToDoList.csproj",
+        "projectPath": "C:\\Users\\guott\\Desktop\\ToDoList\\ToDoList\\ToDoList.csproj",
         "packagesPath": "C:\\Users\\guott\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\guott\\Desktop\\todolist\\ToDoList\\obj\\",
+        "outputPath": "C:\\Users\\guott\\Desktop\\ToDoList\\ToDoList\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\guott\\AppData\\Roaming\\NuGet\\NuGet.Config",

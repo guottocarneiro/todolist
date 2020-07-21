@@ -59,7 +59,7 @@ namespace ToDoList.Controllers
         }
 
         [HttpGet]
-        [Route("tarefas")]
+        [Route("{idLista}/tarefas")]
         public async Task<IActionResult> Tarefas(int idLista)
         {
             var lista = await listaRepository.GetLista(idLista);
