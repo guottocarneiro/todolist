@@ -21,10 +21,12 @@ namespace LoginAPI.Controllers
             this.usuarioRepository = usuarioRepository;
         }
         
+        //string loginUsuario, string senhaUsuario)
+
         [HttpGet("logar")]
-        public async Task<IActionResult> Login(string loginUsuario, string senhaUsuario)
+        public async Task<IActionResult> Login(CadastroUsuarioModel _usuario)
         {
-            var usuario = await usuarioRepository.RealizarLogin(loginUsuario, senhaUsuario);
+            var usuario = await usuarioRepository.RealizarLogin(_usuario.loginUsuario, _usuario.senhaUsuario);
 
             if (usuario == null)
             {

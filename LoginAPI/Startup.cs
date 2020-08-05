@@ -29,6 +29,8 @@ namespace LoginAPI
         {
             services.AddControllers();
 
+            services.AddCors();
+
             string connectionString = Configuration.GetConnectionString("Default");
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
 
@@ -42,6 +44,8 @@ namespace LoginAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseHttpsRedirection();
 
