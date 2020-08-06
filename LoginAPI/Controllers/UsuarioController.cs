@@ -23,8 +23,8 @@ namespace LoginAPI.Controllers
         
         //string loginUsuario, string senhaUsuario)
 
-        [HttpGet("logar")]
-        public async Task<IActionResult> Login(CadastroUsuarioModel _usuario)
+        [HttpPost("logar")]
+        public async Task<IActionResult> Login([FromBody] CadastroUsuarioModel _usuario)
         {
             var usuario = await usuarioRepository.RealizarLogin(_usuario.loginUsuario, _usuario.senhaUsuario);
 
