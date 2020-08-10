@@ -31,6 +31,8 @@ namespace ToDoList
             services.AddDistributedMemoryCache();
             services.AddSession();
 
+            services.AddCors();
+
             string connectionString = Configuration.GetConnectionString("Default");
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connectionString));
 
@@ -54,6 +56,8 @@ namespace ToDoList
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
+
+            app.UseCors(opt => opt.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseRouting();
 

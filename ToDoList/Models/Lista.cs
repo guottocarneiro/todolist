@@ -19,6 +19,12 @@ namespace ToDoList.Models
             this.IdUsuario = idusuario;
         }
 
+        public Lista(string nome, int idusuario)
+        {
+            this.IdUsuario = idusuario;
+            this.Nome = nome;
+        }
+
         public string Nome { get; private set; }
         [Required]
         public int IdUsuario { get; private set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -38,7 +39,28 @@ namespace ToDoList.Controllers
 
             await tarefaRepository.CreateTarefa(tarefa);
         }
-        
+
+        [HttpPost]
+        [Route("createlista")]
+        public async Task CreateLista([FromBody] CadastroListaModel _lista)
+        {
+            var lista = new Lista(_lista.Nome, _lista.IdUsuario);
+
+            await listaRepository.CreateLista(lista);
+        }
+
+        [HttpGet]
+        [Route("{idUsuario}")]
+        public async Task<ICollection> GetListaPorUsuario(int idUsuario)
+        {
+            var listas = await listaRepository.GetListaUsuario(idUsuario);
+
+            var result = (from e in listas
+                          select new { e.Id, e.Nome}).ToArray();
+
+            return result;
+        }
+
         [HttpPost]
         [Route("updatetarefa")]
         public async Task UpdateTarefa([FromBody] CadastroTarefaModel _tarefa)
@@ -58,6 +80,16 @@ namespace ToDoList.Controllers
             await tarefaRepository.DeleteTarefa(idTarefa);
         }
 
+        [HttpPost]
+        [Route("concluirtarefa")]
+        public async Task ConcluirTarefa([FromBody] int idTarefa)
+        {
+            var tarefa = await tarefaRepository.GetTarefa(idTarefa);
+            tarefa.TarefaSetCampos(tarefa.Nome, tarefa.Descricao, true, tarefa.Lista);
+
+            await tarefaRepository.UpdateTarefa(tarefa);
+        }
+
         [HttpGet]
         [Route("{idLista}/tarefas")]
         public async Task<IActionResult> Tarefas(int idLista)
@@ -70,39 +102,11 @@ namespace ToDoList.Controllers
             }
             else
             {
-                var retornoTarefas = new List<Tarefa>();
+                var result = (from e in lista.Tarefas
+                              select new { e.Id, e.Nome, e.Descricao, e.Status }).ToArray();
 
-                retornoTarefas.Add(new Tarefa("Teste", "Teste", true, lista));
-                retornoTarefas.Add(new Tarefa("asda", "Teste", true, lista));
-                retornoTarefas.Add(new Tarefa("asd", "s", true, lista));
-
-                return Ok(retornoTarefas);
+                return Ok(result);
             }
-        }
-
-        [HttpGet]
-        [Route("listas")]
-        public async Task<IActionResult> Listas()
-        {
-            var idUsuario = contextAccessor.HttpContext.Session.GetInt32("usuarioId");
-
-            var listas = await listaRepository.GetListaUsuario((int)idUsuario);
-
-            if(listas  == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                return Ok(listas);
-            }
-        }
-
-        [HttpPost]
-        [Route("usuario")]
-        public void Usuario([FromBody] int idUsuario)
-        {
-            listaRepository.SetUsuarioSession(idUsuario);
         }
 
     }

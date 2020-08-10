@@ -28,9 +28,8 @@ namespace ToDoList.Repositories
             return listas;
         }
 
-        public async Task CreateLista()
+        public async Task CreateLista(Lista lista)
         {
-            var lista = new Lista((int)(contextAccessor.HttpContext.Session.GetInt32("usuarioId")));
             await dbSet.AddAsync(lista);
             await contexto.SaveChangesAsync();
         }

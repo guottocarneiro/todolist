@@ -7,7 +7,7 @@ namespace ToDoList.Repositories
 {
     public interface IListaRepository
     {
-        Task CreateLista();
+        Task CreateLista(Lista lista);
         Task<Lista> GetLista(int idLista);
         Task<ICollection<Lista>> GetListaUsuario(int idUsuario);
         void SetUsuarioSession(int idUsuario);
