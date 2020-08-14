@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
@@ -103,7 +102,7 @@ namespace ToDoList.Controllers
             else
             {
                 var result = (from e in lista.Tarefas
-                              select new { e.Id, e.Nome, e.Descricao, e.Status }).ToArray();
+                              select new { e.Id, e.Nome, e.Descricao, idLista, e.Status }).ToArray();
 
                 return Ok(result);
             }
