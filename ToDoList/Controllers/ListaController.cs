@@ -80,11 +80,11 @@ namespace ToDoList.Controllers
         }
 
         [HttpPost]
-        [Route("concluirtarefa")]
+        [Route("trocartarefa")]
         public async Task ConcluirTarefa([FromBody] int idTarefa)
         {
             var tarefa = await tarefaRepository.GetTarefa(idTarefa);
-            tarefa.TarefaSetCampos(tarefa.Nome, tarefa.Descricao, true, tarefa.Lista);
+            tarefa.TarefaSetCampos(tarefa.Nome, tarefa.Descricao, !tarefa.Status, tarefa.Lista);
 
             await tarefaRepository.UpdateTarefa(tarefa);
         }
