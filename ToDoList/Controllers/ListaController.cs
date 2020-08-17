@@ -108,5 +108,23 @@ namespace ToDoList.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("{idLista}/tarefas/{idTarefa}")]
+        public async Task<IActionResult> GetTarefa(int idLista, int idTarefa)
+        {
+            var tarefa = await tarefaRepository.GetTarefa(idTarefa);
+
+            if (tarefa == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                var result = new CadastroTarefaModel(tarefa.Id,tarefa.Nome,tarefa.Descricao,idLista, tarefa.Status);
+
+                return Ok(result);
+            }
+        }
+
     }
 }
